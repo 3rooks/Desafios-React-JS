@@ -1,12 +1,12 @@
 import Item from "../item/Item";
+import "./itemList.scss";
 
 const ItemList = ({ dataState }) => {
   return (
-    <div>
+    <div className="grid-container">
       {dataState !== undefined
         ? dataState.results.map((e) => {
-            console.log(dataState);
-            return <Item item={e} />;
+            return <Item item={e} key={e.id} />;
           })
         : console.log(dataState)}
     </div>

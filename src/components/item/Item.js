@@ -1,10 +1,10 @@
-const Item = ({ e }) => {
+const Item = ({ item }) => {
   return (
-    <div key={e.id}>
+    <div>
       <p>
-        {e.name} - {e.gender}
+        {item.name} - {item.gender}
       </p>
-      <img src={e.image} />
+      <img src={item.image} />
     </div>
   );
 };
