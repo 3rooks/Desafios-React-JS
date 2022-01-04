@@ -3,16 +3,13 @@ import ItemDetail from "../itemDetail/ItemDetail";
 
 const ItemDetailContainer = () => {
   const URL = "https://fakestoreapi.com/products";
-  const [product, setProduct] = useState();
-
-  const GET_DATA = async () => {
-    const DATA = await fetch(URL);
-    const DATA_JSON = await DATA.json();
-    setProduct(DATA_JSON);
-  };
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    GET_DATA();
+    fetch(URL)
+      .then((res) => res.json())
+      .then((res) => setProduct(res))
+      .catch((error) => console.log(error));
   }, []);
 
   return (
