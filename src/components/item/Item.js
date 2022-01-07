@@ -1,10 +1,20 @@
+import { Link } from "react-router-dom";
+
 const Item = ({ item }) => {
+  const { id, title, price, description, image } = item;
   return (
     <div>
       <p>
-        {item.name} - {item.gender}
+        <i>Product:</i> <b>{title}</b>
       </p>
-      <img src={item.image} />
+      <p>
+        <i>Price: $</i>
+        <b>{price}</b>
+      </p>
+      <img src={image} />
+      <Link to={"/Item/" + id}>
+        <button>See More</button>
+      </Link>
     </div>
   );
 };

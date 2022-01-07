@@ -2,23 +2,19 @@ import { useState, useEffect } from "react";
 import ItemList from "../itemList/ItemList";
 
 const ItemListContainer = ({ greeting }) => {
-  const URL = "https://rickandmortyapi.com/api/character";
-  const [character, setCharacter] = useState();
-
-  const GET_DATA = async () => {
-    const DATA = await fetch(URL);
-    const DATA_JSON = await DATA.json();
-    setCharacter(DATA_JSON);
-  };
+  const URL = "https://fakestoreapi.com/products";
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    GET_DATA();
+    fetch(URL)
+      .then((res) => res.json())
+      .then((res) => setProducts(res))
+      .catch((error) => console.log(error));
   }, []);
-
   return (
     <>
       <h2>{greeting}</h2>
-      <ItemList dataState={character} />
+      <ItemList dataState={products} />
     </>
   );
 };

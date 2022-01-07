@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import "./cartWidget.scss";
 
 const CartWidget = () => (
-  <span className="shop_cart">
+  <Link to="/Cart" className="shop_cart">
     <img src="/shopping_cart.svg" />
-  </span>
+  </Link>
 );
 
 export default CartWidget;

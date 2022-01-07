@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./header.scss";
 import CartWidget from "../cart_widget/CartWidget";
 
@@ -7,19 +8,19 @@ const Header = () => (
     <nav>
       <ul className="nav-list">
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <Link className="nav-link" to="/Home">
             Home
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <Link className="nav-link" to="/AboutUs">
             About Us
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">
+          <Link className="nav-link" to="/Contact">
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
       <CartWidget />
