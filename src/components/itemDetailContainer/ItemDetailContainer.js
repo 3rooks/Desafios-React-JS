@@ -6,18 +6,26 @@ const ItemDetailContainer = () => {
   const ID = useParams();
   const { id } = ID;
   const URL = `https://fakestoreapi.com/products/${id}`;
+
   const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
-      .then((res) => setProduct(res))
+      .then((res) => setProduct(res), setLoading(true))
       .catch((error) => console.log(error));
   }, []);
-  return (
-    <div>
-      <ItemDetail dataState={product} />
-    </div>
-  );
+
+  if (!loading) {
+    return <h1>Loading!...</h1>;
+  } else {
+    return (
+      <div>
+        <ItemDetail dataState={product} />
+      </div>
+    );
+  }
 };
 
 export default ItemDetailContainer;
