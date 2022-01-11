@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial, onAdd }) => {
   const [counter, setCount] = useState(initial);
 
   const increase = () => {
@@ -21,10 +21,8 @@ const ItemCount = ({ stock, initial }) => {
     counter === initial ? setCount(initial) : setCount(counter - initial);
   };
 
-  const empty = () => {
-    if (counter > initial) {
-      setCount(1);
-    }
+  const confirm = () => {
+    onAdd(counter);
   };
 
   return (
@@ -32,7 +30,7 @@ const ItemCount = ({ stock, initial }) => {
       <h3>Quantity of Products: {counter}</h3>
       <button onClick={increase}>+</button>
       <button onClick={decrease}>-</button>
-      <button onClick={empty}>Empty</button>
+      <button onClick={confirm}>Confirm</button>
     </div>
   );
 };

@@ -1,7 +1,16 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import ItemCount from "../itemCount/ItemCount";
 
 const ItemDetail = ({ dataState }) => {
   const { title, price, image, description } = dataState;
+  const [added, setAdded] = useState(false);
+
+  const onAdd = (quantity) => {
+    setAdded(true);
+    console.log(quantity);
+  };
+
   return (
     <div>
       <img src={image} />
@@ -15,8 +24,13 @@ const ItemDetail = ({ dataState }) => {
       <p>
         <i>Description:</i> <b>{description}</b>
       </p>
-      <ItemCount stock={10} initial={1} />
-      <button>Add to Cart</button>
+      {added ? (
+        <Link to="/Cart">
+          <button>Go to Cart</button>
+        </Link>
+      ) : (
+        <ItemCount stock={10} initial={1} onAdd={onAdd} />
+      )}
     </div>
   );
 };

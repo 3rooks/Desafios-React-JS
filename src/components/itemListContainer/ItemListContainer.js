@@ -18,8 +18,9 @@ const ItemListContainer = ({ greeting }) => {
 
     fetch(URL)
       .then((res) => res.json())
-      .then((res) => setProducts(res), setLoading(true))
-      .catch((error) => console.log(error));
+      .then((res) => setProducts(res))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(true));
   }, [ID]);
 
   if (!loading) {

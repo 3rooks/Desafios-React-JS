@@ -13,8 +13,9 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     fetch(URL)
       .then((res) => res.json())
-      .then((res) => setProduct(res), setLoading(true))
-      .catch((error) => console.log(error));
+      .then((res) => setProduct(res))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(true));
   }, []);
 
   if (!loading) {
